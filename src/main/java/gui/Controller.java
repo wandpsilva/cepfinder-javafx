@@ -1,5 +1,7 @@
 package gui;
 
+import com.google.gson.Gson;
+import gui.model.Endereco;
 import gui.util.Alerts;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -39,7 +41,10 @@ public class Controller implements Initializable {
         BufferedReader br = new BufferedReader(new InputStreamReader(is));
         String resultado = br.readLine();
 
-        Alerts.showAlert("Endereco: ", null, resultado, Alert.AlertType.INFORMATION);
+        Gson json = new Gson();
+        Endereco end = json.fromJson(resultado, Endereco.class);
+
+        Alerts.showAlert("Endereco: ", null, end.toString(), Alert.AlertType.INFORMATION);
     }
 
     @FXML

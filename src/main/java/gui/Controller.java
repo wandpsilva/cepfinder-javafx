@@ -15,6 +15,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
@@ -35,6 +36,7 @@ public class Controller implements Initializable {
     public void onBtnBuscarAction() throws IOException {
         Locale.setDefault(Locale.US);
         String cep = txtCep.getText();
+        cep = cep.replace("-", "");
 
         URL url = new URL("https://ws.apicep.com/cep.json?code=" + cep);
         InputStream is = url.openConnection().getInputStream();
@@ -44,7 +46,11 @@ public class Controller implements Initializable {
         Gson json = new Gson();
         Endereco end = json.fromJson(resultado, Endereco.class);
 
-        Alerts.showAlert("Endereco: ", null, end.toString(), Alert.AlertType.INFORMATION);
+        if (Objects.isNull(end.getAddress())) {
+            Alerts.showAlert("Endereço não encontrado!", null, "Endereço não encontrado para o cep informado!", Alert.AlertType.ERROR);
+        } else {
+            Alerts.showAlert("Endereco: ", null, end.toString(), Alert.AlertType.INFORMATION);
+        }
     }
 
     @FXML

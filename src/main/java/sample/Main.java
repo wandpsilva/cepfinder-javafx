@@ -13,7 +13,7 @@ public class Main extends Application {
         try {
             Parent parent = FXMLLoader.load(getClass().getResource("/View.fxml"));
             Scene scene = new Scene(parent);
-            primaryStage.setTitle("Calculadora");
+            primaryStage.setTitle("CEPFINDER");
             primaryStage.setScene(scene);
             primaryStage.resizableProperty().setValue(Boolean.FALSE);
             primaryStage.show();

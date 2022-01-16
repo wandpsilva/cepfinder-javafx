@@ -1,4 +1,4 @@
-package gui.model;
+package javafx.gui.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

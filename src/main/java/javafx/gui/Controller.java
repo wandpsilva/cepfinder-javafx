@@ -1,8 +1,8 @@
-package gui;
+package javafx.gui;
 
 import com.google.gson.Gson;
-import gui.model.Endereco;
-import gui.util.Alerts;
+import javafx.gui.model.Endereco;
+import javafx.gui.util.Alerts;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
